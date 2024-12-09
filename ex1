@@ -1,0 +1,17 @@
+from pyomo.environ import *
+import pandas as pd
+import numpy as np
+from data_processing import load_all_data
+from calcula_fpo import calcular_fpo
+
+z_ger = np.ones(11)
+z_line = np.ones(11)
+z_ger = [z_ger[i] for i in range(len(z_ger))
+z_line = [z_line[i] for i in range(len(z_line))
+
+print(z_ger)
+print(z_line)
+y = calcular_fpo(z_ger, z_line)
+print(y)
+
+
