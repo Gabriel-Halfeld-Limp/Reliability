@@ -126,7 +126,7 @@ def calcular_fpo(z_ger, z_line):
     print("Ângulo de tensão por barra:", resultados['theta'])
     print("Fluxo por linha:", resultados['flux'])
 
-    return resultados['pd']
+    return S_base*sum(resultados['pd'].values())
 
     
 
@@ -134,7 +134,8 @@ def calcular_fpo(z_ger, z_line):
 
 zger = [1,1,1,1,1,1,1,1,1,1,1]
 #zger = [0,0,0,0,0,0,0,0,0,0,0]
-zline = [0,0,0,0,0,0,0,0,0,0,0]
-#zline = [1,1,1,1,1,1,1,1,1,1,1]
+#zline = [0,0,0,0,0,0,0,0,0,0,0]
+zline = [1,1,1,1,1,1,1,1,1,1,1]
 
 pd = (calcular_fpo(zger, zline))
+print(pd)
