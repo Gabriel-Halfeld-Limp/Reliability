@@ -113,18 +113,18 @@ def calcular_fpo(z_ger, z_line):
     resultados['pd'] = {carga: model.pd[carga].value for carga in model.carga}
     resultados['theta'] = {barra: model.theta[barra].value for barra in model.bus}
     resultados['flux'] = {line: model.flux[line].value for line in model.line}
-    model.pprint()
+    #model.pprint()
     
     #Extrair os resultados:
     #Imprimir a função objetivo
-    print("Função Objetivo: Menor perda de carga =", model.objective.expr())
+    #print("Função Objetivo: Menor perda de carga =", model.objective.expr())
     
         #Imprimir os resultados
-    print("Resultados:")
-    print("Geração por gerador:", resultados['pg'])
-    print("Corte de Carga por Barra:", resultados['pd'])
-    print("Ângulo de tensão por barra:", resultados['theta'])
-    print("Fluxo por linha:", resultados['flux'])
+    #print("Resultados:")
+    #print("Geração por gerador:", resultados['pg'])
+    #print("Corte de Carga por Barra:", resultados['pd'])
+    #print("Ângulo de tensão por barra:", resultados['theta'])
+    #print("Fluxo por linha:", resultados['flux'])
 
     return S_base*sum(resultados['pd'].values())
 
