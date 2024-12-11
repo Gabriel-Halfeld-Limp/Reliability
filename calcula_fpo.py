@@ -131,3 +131,10 @@ def calcular_fpo(z_ger, z_line, flag_print):
         print("Fluxo por linha:", resultados['flux'])
 
     return model.objective.expr()*S_base
+
+
+z_ger = [1,1,1,1,1,1,1,1,1,1,1]
+z_line = [1,1,1,1,1,1,1,1,1,1,1]
+
+pd = calcular_fpo(z_ger, z_line, False)
+print(pd)
