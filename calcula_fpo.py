@@ -2,7 +2,8 @@ from pyomo.environ import *
 from data_processing import load_all_data  # Importando a função que lê os dados
 import numpy as np
 
-def calcular_fpo(z_ger, z_line):
+def calcular_fpo(z_ger, z_line, flag_print):
+
     # Carregando os dados do arquivo CSV
     dados = load_all_data()  # Chama a função que carrega os dados
     D_GEN = dados['D_GEN']
@@ -113,29 +114,20 @@ def calcular_fpo(z_ger, z_line):
     resultados['pd'] = {carga: model.pd[carga].value for carga in model.carga}
     resultados['theta'] = {barra: model.theta[barra].value for barra in model.bus}
     resultados['flux'] = {line: model.flux[line].value for line in model.line}
-    #model.pprint()
     
-    #Extrair os resultados:
-    #Imprimir a função objetivo
-    #print("Função Objetivo: Menor perda de carga =", model.objective.expr())
+    if flag_print:
+
+        #model.pprint()
     
-        #Imprimir os resultados
-    #print("Resultados:")
-    #print("Geração por gerador:", resultados['pg'])
-    #print("Corte de Carga por Barra:", resultados['pd'])
-    #print("Ângulo de tensão por barra:", resultados['theta'])
-    #print("Fluxo por linha:", resultados['flux'])
+        #Extrair os resultados:
+        #Imprimir a função objetivo
+        print("Função Objetivo: Menor perda de carga =", model.objective.expr())
+        
+            #Imprimir os resultados
+        print("Resultados:")
+        print("Geração por gerador:", resultados['pg'])
+        print("Corte de Carga por Barra:", resultados['pd'])
+        print("Ângulo de tensão por barra:", resultados['theta'])
+        print("Fluxo por linha:", resultados['flux'])
 
-    return S_base*sum(resultados['pd'].values())
-
-    
-
-
-
-zger = [1,1,1,1,1,1,1,1,1,1,1]
-#zger = [0,0,0,0,0,0,0,0,0,0,0]
-#zline = [0,0,0,0,0,0,0,0,0,0,0]
-zline = [1,1,1,1,1,1,1,1,1,1,1]
-
-pd = (calcular_fpo(zger, zline))
-print(pd)
+    return model.objective.expr()*S_base
