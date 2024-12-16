@@ -4,10 +4,7 @@ The codebase is organized into different modules, each focusing on a specific as
 
 1. Data Preparation
 Purpose: Load and preprocess the input data for the system, including information about buses, lines, generators, and loads.
-
-Files:
-
-data_processing.py: Handles data import from CSV files and prepares it for simulation.
+Files: data_processing.py: Handles data import from CSV files and prepares it for simulation.
 DADOS/: Contains input files such as:
 D_GEN.csv: Generator characteristics (capacity, failure rates, repair times).
 D_LIN.csv: Transmission line data (capacity, failure rates, reactivity, etc.).
